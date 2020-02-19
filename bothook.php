@@ -16,21 +16,21 @@ $commands = [
 	// General Commands
 	'help',
 
-  'benvenuto',
+    'benvenuto',
 
 	'immortali',
 
 	'fizban',
 
-	'ciro',
+    'ciro',
 
 	'maledetto',
 
-  'aggiornamento',
+    'aggiornamento',
 
-  'manutenzione',
+    'manutenzione',
 
-  'bestemmia',
+    'bestemmia',
 
 	'eroi'
 
@@ -40,53 +40,13 @@ $arguments = [
 	// Server
 	'help'=>[
 	],
-
-	'eroi'=>[
-		'arciere',
-		'barbaro',
-		'furioso',
-		'bombarolo',
-		'volpe_ghiacciata',
-		'goblin',
-		'golem',
-		'cavaliere',
-		'naga',
-		'pirata',
-		'satiro',
-		'scheletro',
-		'percussore',
-		'treant',
-		'yeti',
-		'arpia',
-		'assassino',
-		'fabbro',
-		'cultista',
-		'regina_dei_ghiacci',
-		'kong',
-		'orco',
-		'robot',
-		'stregone',
-		'gigante',
-		'maga',
-		'giaguaro',
-		'paladino',
-		'zombie',
-		'incantatrice',
-		'vampiro',
-		'sacerdote',
-		'druido',
-		'genio',
-		'sentinella',
-		'sciamano',
-		'draghetto',
-		'lanciarazzi',
-		'furia',
-    'guerriero',
-    'idolo_tonante',
-    'armadillo',
-    'burattinaio',
-    ],
 ];
+
+$query= mysql_query("SELECT * FROM `eroi` ORDER BY `nomeIta`");
+while ($riga = mysql_fetch_assoc($query)) {
+    $listaEroi[] = $riga['nomeIta'];
+}
+$arguments['eroi'] = $listaEroi;
 
 // Aliases for commands
 $alias = [
@@ -114,52 +74,29 @@ else {
 
 
 switch ($command) {
-	case 'help':
+    case 'fizban':
+    case 'benvenuto':
+    case 'ciro':
+    case 'immortali':
+    case 'maledetto':
+    case 'aggiornamento':
+    case 'manutenzione':
+    case 'bestemmia':
+    case 'help':
 		$class = 'Help';
 		break;
 	case 'eroi':
 		$class = 'Eroi';
 		break;
-	case 'fizban':
-		$class = 'Help';
-		break;
-  case 'benvenuto':
-		$class = 'Help';
-		break;
-	case 'ciro':
-		$class = 'Help';
-		break;
-	case 'immortali':
-		$class = 'Help';
-		break;
-  case 'maledetto':
-		$class = 'Help';
-		break;
-  case 'aggiornamento':
-		$class = 'Help';
-		break;
-    case 'manutenzione':
-		$class = 'Help';
-		break;
-    case 'bestemmia':
-		$class = 'Help';
-		break;
-	default:
+    default:
 		$class = 'Bot';
 }
 
-$hook = new $class($conf, $chat_id);
+$hook = new $class($method, $conf, $chat_id);
 
 if (!$hook->isTrusted()) {
 	$hook->unauthorized();
 	die();
 }
 
-if (in_array($command, $commands)) {
-	if (isset($arguments[$command]) && in_array($method, $arguments[$command])) {
-		$hook->{$method}($args);
-		die();
-	} else if (in_array($command, $commands)) {
-		$hook->{$command}($args);
-	}
-}
+$hook->$command($args);

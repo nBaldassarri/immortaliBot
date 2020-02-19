@@ -1,5 +1,8 @@
 <?
 
+mysql_connect('localhost', 'immortali', '');
+mysql_select_db('my_immortali');
+
 $conf = [
 	//Change to your bot token, check the readme to know how to create and get your bot token.
 	'bot_token' => '726068709:AAGaYFiFWpmBSGLmVgyhutur_nCcLj0GHok',

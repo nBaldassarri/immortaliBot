@@ -5,16 +5,14 @@ class Help extends Bot
 	public function __construct($conf, $chat_id)
 	{
 		parent::__construct($conf, $chat_id);
-		mysql_connect('localhost', 'immortali', '');
-		mysql_select_db('my_immortali');
 	}
 
 	public function help()
 	{
-		$message = "<b>Aiuti Generali</b>" . chr(10) . chr(10);
-    $message .= "<b>/eroi NomeEroe</b>" . chr(10) . "  - Link diretto alle statistiche dell eroe nella wiki.\n\n";
-    $message .= "<b>/benvenuto</b>" . chr(10) . "  - Messaggio standard di benvenuto all'entrata di un nuovo membro.";
-    $message .= "<b>/immortali</b>" . chr(10) . "  - Lista completa degli utenti del clan.";
+		$message =  "<b>Aiuti Generali</b>" . chr(10) . chr(10);
+        $message .= "<b>/eroi NomeEroe</b>" . chr(10) . "  - Link diretto alle statistiche dell eroe nella wiki.\n\n";
+        $message .= "<b>/benvenuto</b>" . chr(10) . "  - Messaggio standard di benvenuto all'entrata di un nuovo membro.";
+        $message .= "<b>/immortali</b>" . chr(10) . "  - Lista completa degli utenti del clan.";
 
 		return $this->send($message);
 	}
