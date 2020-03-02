@@ -10,10 +10,10 @@ $conf = [
 	'only_trusted' => TRUE,
 	//Populate the array with the trusted Chat IDs
 	'trusted' => [
-    '171374027', //io
+	    '171374027', //io
 		'16183036', //jimmisquab
 		'596607083', //scarymark
 		'-1001380053281', //il clan
-    '-385800451' //clan hdemy
+        '-385800451' //clan hdemy
 		],
 	];
