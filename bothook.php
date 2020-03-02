@@ -99,4 +99,19 @@ if (!$hook->isTrusted()) {
 	die();
 }
 
-$hook->$command($args);
+if($command === 'eroi')
+    $hook->$command();
+else
+{
+    if (in_array($command, $commands)) {
+        if (isset($arguments[$command]) && in_array($method, $arguments[$command])) {
+            $hook->{$method}($args);
+            die();
+        } else if (in_array($command, $commands)) {
+            $hook->{$command}($args);
+        }
+}
+}
+
+
+

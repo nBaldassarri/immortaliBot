@@ -2,7 +2,7 @@
 
 class Help extends Bot
 {
-	public function __construct($conf, $chat_id)
+	public function __construct($method, $conf, $chat_id)
 	{
 		parent::__construct($conf, $chat_id);
 	}
