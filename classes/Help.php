@@ -13,8 +13,10 @@ class Help extends Bot
         $message .= "<b>/eroi NomeEroe</b>" . chr(10) . "  - Link diretto alle statistiche dell eroe nella wiki.\n\n";
         $message .= "<b>/benvenuto</b>" . chr(10) . "  - Messaggio standard di benvenuto all'entrata di un nuovo membro.";
         $message .= "<b>/immortali</b>" . chr(10) . "  - Lista completa degli utenti del clan.";
+        $message .= "<b>/ciro /maledetto /manutenzione /bestemmia /fizban</b>" . chr(10) . "  - messaggi simpatici.";
 
-		return $this->send($message);
+
+        return $this->send($message);
 	}
 
 	public function fizban()
