@@ -7,7 +7,7 @@ class Bot
 	private $trusted = array();
 	private $chat_id = '';
 
-	public function __construct($conf, $chat_id)
+	public function __construct($method, $conf, $chat_id)
 	{
 		$this->api_url = 'https://api.telegram.org/bot' . $conf['bot_token'];
 		$this->only_trusted = $conf['only_trusted'];
